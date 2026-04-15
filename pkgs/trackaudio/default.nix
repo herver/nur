@@ -41,17 +41,17 @@ stdenv.mkDerivation {
     nspr
     nss
     pango
-    xorg.libX11
-    xorg.libXcomposite
-    xorg.libXcursor
-    xorg.libXdamage
-    xorg.libXext
-    xorg.libXfixes
-    xorg.libXinerama
-    xorg.libXrandr
-    xorg.libXt
-    xorg.libXtst
-    xorg.libxcb
+    libX11
+    libXcomposite
+    libXcursor
+    libXdamage
+    libXext
+    libXfixes
+    libXinerama
+    libXrandr
+    libXt
+    libXtst
+    libxcb
     systemdMinimal # libudev
   ];
 
