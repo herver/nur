@@ -58,7 +58,7 @@ stdenv.mkDerivation {
 
     makeWrapper $out/lib/vATIS $out/bin/vatis \
       --set SSL_CERT_FILE "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt" \
-      --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath [ pkgs.libGL pkgs.vulkan-loader ]}"
+      --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath [ pkgs.libGL pkgs.vulkan-loader pkgs.icu ]}"
 
     runHook postInstall
   '';
