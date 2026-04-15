@@ -40,6 +40,10 @@ stdenv.mkDerivation {
     stdenv.cc.cc.lib # libstdc++
   ];
 
+  runtimeDependencies = [
+    (lib.getLib pkgs.icu)
+  ];
+
   dontConfigure = true;
   dontBuild = true;
 
@@ -58,7 +62,18 @@ stdenv.mkDerivation {
 
     makeWrapper $out/lib/vATIS $out/bin/vatis \
       --set SSL_CERT_FILE "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt" \
-      --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath [ pkgs.libGL pkgs.vulkan-loader pkgs.icu ]}"
+      --prefix LD_LIBRARY_PATH : "$out/lib:${lib.makeLibraryPath [
+        pkgs.libGL
+        pkgs.vulkan-loader
+        pkgs.xorg.libX11
+        pkgs.xorg.libXcursor
+        pkgs.xorg.libXi
+        pkgs.xorg.libXrandr
+        pkgs.xorg.libICE
+        pkgs.xorg.libSM
+        pkgs.alsa-lib
+        pkgs.libpulseaudio
+      ]}"
 
     runHook postInstall
   '';
