@@ -36,6 +36,7 @@ stdenv.mkDerivation {
     glib
     gtk3
     libdrm
+    libpulseaudio
     libxkbcommon
     mesa
     nspr
@@ -75,7 +76,13 @@ stdenv.mkDerivation {
     makeWrapper $out/lib/trackaudio $out/bin/trackaudio \
       --set SSL_CERT_FILE "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt" \
       --add-flags "--no-sandbox" \
-      --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath [ pkgs.libGL pkgs.vulkan-loader ]}"
+      --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath [
+        pkgs.libGL
+        pkgs.vulkan-loader
+        # miniaudio (via afv-native) dlopen()s these at runtime
+        pkgs.alsa-lib
+        pkgs.libpulseaudio
+      ]}"
 
     runHook postInstall
   '';
