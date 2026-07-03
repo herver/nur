@@ -8,14 +8,14 @@
 }:
 
 let
-  version = "2.1.198";
+  version = "2.1.199";
   pname = "claude-code";
 
   # GCS bucket backing the official installer (claude.ai/install.sh).
   # Tracks the "latest" channel; see update.sh.
   src = fetchurl {
     url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/${version}/linux-x64/claude";
-    hash = "sha256-cGavQqX+kwOME69QctTANNw5KAkssSH92JLHa5S2uE0=";
+    hash = "sha256-sx39Xj3uI7UcQuDY3bQFFIl4I306q8jLv3fFz4M2fic=";
     name = "${pname}-${version}";
   };
 in
