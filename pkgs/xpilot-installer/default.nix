@@ -12,10 +12,7 @@ let
   version = "4.0.0-beta.6";
   pname = "xpilot-installer";
 
-  # Same toolchain workaround as pkgs/xpilot: dwarfs 0.14.0 does not build
-  # against this nixpkgs, so build its vendored fbthrift against fmt 11 and
-  # force-include <cstring> for folly. Needed only to run dwarfsextract on the
-  # type-2 DwarFS AppImage.
+  # Same toolchain workaround as pkgs/xpilot
   dwarfs' = (dwarfs.override { fmt = pkgs.fmt_11; }).overrideAttrs (old: {
     env = (old.env or { }) // {
       CXXFLAGS = "${old.env.CXXFLAGS or ""} -include cstring";
