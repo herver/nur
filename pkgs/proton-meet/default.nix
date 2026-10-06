@@ -14,7 +14,7 @@ let
 
   src = fetchurl {
     url = "https://proton.me/download/meet/linux/${version}/ProtonMeet-desktop.deb";
-    hash = "sha256-ErP6CAyHjlAh8wRFQevsQG+dUSiHA7wKCjFe3JPxBBA=";
+    hash = "sha256-FrP6CAyHjlAh8wRFQevsQG+dUSiHA7wKCjFe3JPxBBA=";
   };
 in
 stdenv.mkDerivation {
