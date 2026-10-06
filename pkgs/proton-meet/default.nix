@@ -93,3 +93,4 @@ stdenv.mkDerivation {
     mainProgram = "proton-meet";
   };
 }
+# ci automerge test
