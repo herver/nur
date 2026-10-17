@@ -116,9 +116,9 @@ stdenv.mkDerivation {
       chrome_crashpad_handler Stratos $out/lib/stratos/
     cp -r usr/share/icons $out/share/
 
-    cp Stratos.desktop $out/share/applications/stratos.desktop
+    cp stratos.desktop $out/share/applications/stratos.desktop
     substituteInPlace $out/share/applications/stratos.desktop \
-      --replace-fail 'Exec=AppRun --no-sandbox %U' 'Exec=stratos %U'
+      --replace-fail 'Exec=AppRun %U' 'Exec=stratos %U'
 
     makeWrapper $out/lib/stratos/Stratos $out/bin/stratos \
       --set SSL_CERT_FILE "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt" \
